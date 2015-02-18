@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BarrioViewDlg" widgetVar="BarrioViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewBarrioTitle}">
+            <h:form id="BarrioViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{barrioController.selected != null}">
+                        <h:outputText value="#{bundle.ViewBarrioLabel_idBarrio}"/>
+                        <h:outputText value="#{barrioController.selected.idBarrio}" title="#{bundle.ViewBarrioTitle_idBarrio}"/>
+                        <h:outputText value="#{bundle.ViewBarrioLabel_descripcion}"/>
+                        <h:outputText value="#{barrioController.selected.descripcion}" title="#{bundle.ViewBarrioTitle_descripcion}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="BarrioViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

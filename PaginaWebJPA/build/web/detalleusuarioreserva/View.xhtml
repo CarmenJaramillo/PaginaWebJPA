@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DetalleusuarioreservaViewDlg" widgetVar="DetalleusuarioreservaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewDetalleusuarioreservaTitle}">
+            <h:form id="DetalleusuarioreservaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{detalleusuarioreservaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewDetalleusuarioreservaLabel_idDetalleUsuarioReserva}"/>
+                        <h:outputText value="#{detalleusuarioreservaController.selected.idDetalleUsuarioReserva}" title="#{bundle.ViewDetalleusuarioreservaTitle_idDetalleUsuarioReserva}"/>
+                        <h:outputText value="#{bundle.ViewDetalleusuarioreservaLabel_vrunitario}"/>
+                        <h:outputText value="#{detalleusuarioreservaController.selected.vrunitario}" title="#{bundle.ViewDetalleusuarioreservaTitle_vrunitario}"/>
+                        <h:outputText value="#{bundle.ViewDetalleusuarioreservaLabel_idReserva}"/>
+                        <h:outputText value="#{detalleusuarioreservaController.selected.idReserva}" title="#{bundle.ViewDetalleusuarioreservaTitle_idReserva}"/>
+                        <h:outputText value="#{bundle.ViewDetalleusuarioreservaLabel_idUsuario}"/>
+                        <h:outputText value="#{detalleusuarioreservaController.selected.idUsuario}" title="#{bundle.ViewDetalleusuarioreservaTitle_idUsuario}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="DetalleusuarioreservaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

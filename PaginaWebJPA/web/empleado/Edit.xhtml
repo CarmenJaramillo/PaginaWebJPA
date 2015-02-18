@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EmpleadoEditDlg" widgetVar="EmpleadoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditEmpleadoTitle}">
+            <h:form id="EmpleadoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{empleadoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditEmpleadoLabel_idEmpleado}" for="idEmpleado" />
+                        <p:inputText id="idEmpleado" value="#{empleadoController.selected.idEmpleado}" title="#{bundle.EditEmpleadoTitle_idEmpleado}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_idEmpleado}"/>
+                        <p:outputLabel value="#{bundle.EditEmpleadoLabel_nombre1}" for="nombre1" />
+                        <p:inputText id="nombre1" value="#{empleadoController.selected.nombre1}" title="#{bundle.EditEmpleadoTitle_nombre1}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_nombre1}"/>
+                        <p:outputLabel value="#{bundle.EditEmpleadoLabel_nombre2}" for="nombre2" />
+                        <p:inputText id="nombre2" value="#{empleadoController.selected.nombre2}" title="#{bundle.EditEmpleadoTitle_nombre2}" />
+                        <p:outputLabel value="#{bundle.EditEmpleadoLabel_apellido1}" for="apellido1" />
+                        <p:inputText id="apellido1" value="#{empleadoController.selected.apellido1}" title="#{bundle.EditEmpleadoTitle_apellido1}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_apellido1}"/>
+                        <p:outputLabel value="#{bundle.EditEmpleadoLabel_apellido2}" for="apellido2" />
+                        <p:inputText id="apellido2" value="#{empleadoController.selected.apellido2}" title="#{bundle.EditEmpleadoTitle_apellido2}" />
+                        <p:outputLabel value="#{bundle.EditEmpleadoLabel_fecNcto}" for="fecNcto" />
+                        <p:calendar id="fecNcto" pattern="MM/dd/yyyy" value="#{empleadoController.selected.fecNcto}" title="#{bundle.EditEmpleadoTitle_fecNcto}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_fecNcto}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditEmpleadoLabel_sexo}" for="sexo" />
+                        <p:selectBooleanCheckbox id="sexo" value="#{empleadoController.selected.sexo}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_sexo}"/>
+                        <p:outputLabel value="#{bundle.EditEmpleadoLabel_telefono}" for="telefono" />
+                        <p:inputText id="telefono" value="#{empleadoController.selected.telefono}" title="#{bundle.EditEmpleadoTitle_telefono}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_telefono}"/>
+                        <p:outputLabel value="#{bundle.EditEmpleadoLabel_direccion}" for="direccion" />
+                        <p:inputText id="direccion" value="#{empleadoController.selected.direccion}" title="#{bundle.EditEmpleadoTitle_direccion}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_direccion}"/>
+                        <p:outputLabel value="#{bundle.EditEmpleadoLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{empleadoController.selected.email}" title="#{bundle.EditEmpleadoTitle_email}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_email}"/>
+                        <p:outputLabel value="#{bundle.EditEmpleadoLabel_contrasenia}" for="contrasenia" />
+                        <p:inputText id="contrasenia" value="#{empleadoController.selected.contrasenia}" title="#{bundle.EditEmpleadoTitle_contrasenia}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_contrasenia}"/>
+                        <p:outputLabel value="#{bundle.EditEmpleadoLabel_idDepartamento}" for="idDepartamento" />
+                        <p:selectOneMenu id="idDepartamento" value="#{empleadoController.selected.idDepartamento}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_idDepartamento}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{departamentoController.itemsAvailableSelectOne}"
+                                           var="idDepartamentoItem"
+                                           itemValue="#{idDepartamentoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditEmpleadoLabel_idBarrio}" for="idBarrio" />
+                        <p:selectOneMenu id="idBarrio" value="#{empleadoController.selected.idBarrio}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_idBarrio}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{barrioController.itemsAvailableSelectOne}"
+                                           var="idBarrioItem"
+                                           itemValue="#{idBarrioItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditEmpleadoLabel_idCiudad}" for="idCiudad" />
+                        <p:selectOneMenu id="idCiudad" value="#{empleadoController.selected.idCiudad}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_idCiudad}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{ciudadController.itemsAvailableSelectOne}"
+                                           var="idCiudadItem"
+                                           itemValue="#{idCiudadItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditEmpleadoLabel_idRol}" for="idRol" />
+                        <p:selectOneMenu id="idRol" value="#{empleadoController.selected.idRol}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_idRol}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{rolController.itemsAvailableSelectOne}"
+                                           var="idRolItem"
+                                           itemValue="#{idRolItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditEmpleadoLabel_idEstrato}" for="idEstrato" />
+                        <p:selectOneMenu id="idEstrato" value="#{empleadoController.selected.idEstrato}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_idEstrato}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{estratoController.itemsAvailableSelectOne}"
+                                           var="idEstratoItem"
+                                           itemValue="#{idEstratoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{empleadoController.update}" value="#{bundle.Save}" update="display,:EmpleadoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EmpleadoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EmpleadoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

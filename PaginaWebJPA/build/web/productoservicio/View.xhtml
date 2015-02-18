@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProductoservicioViewDlg" widgetVar="ProductoservicioViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewProductoservicioTitle}">
+            <h:form id="ProductoservicioViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{productoservicioController.selected != null}">
+                        <h:outputText value="#{bundle.ViewProductoservicioLabel_idProductoScio}"/>
+                        <h:outputText value="#{productoservicioController.selected.idProductoScio}" title="#{bundle.ViewProductoservicioTitle_idProductoScio}"/>
+                        <h:outputText value="#{bundle.ViewProductoservicioLabel_nombreProductoServicio}"/>
+                        <h:outputText value="#{productoservicioController.selected.nombreProductoServicio}" title="#{bundle.ViewProductoservicioTitle_nombreProductoServicio}"/>
+                        <h:outputText value="#{bundle.ViewProductoservicioLabel_vrUnitario}"/>
+                        <h:outputText value="#{productoservicioController.selected.vrUnitario}" title="#{bundle.ViewProductoservicioTitle_vrUnitario}"/>
+                        <h:outputText value="#{bundle.ViewProductoservicioLabel_cantidad}"/>
+                        <h:outputText value="#{productoservicioController.selected.cantidad}" title="#{bundle.ViewProductoservicioTitle_cantidad}"/>
+                        <h:outputText value="#{bundle.ViewProductoservicioLabel_idCategoria}"/>
+                        <h:outputText value="#{productoservicioController.selected.idCategoria}" title="#{bundle.ViewProductoservicioTitle_idCategoria}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ProductoservicioViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

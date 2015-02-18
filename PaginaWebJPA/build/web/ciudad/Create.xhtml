@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CiudadCreateDlg" widgetVar="CiudadCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateCiudadTitle}">
+            <h:form id="CiudadCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{ciudadController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateCiudadLabel_idCiudad}" for="idCiudad" />
+                        <p:inputText id="idCiudad" value="#{ciudadController.selected.idCiudad}" title="#{bundle.CreateCiudadTitle_idCiudad}" required="true" requiredMessage="#{bundle.CreateCiudadRequiredMessage_idCiudad}"/>
+                        <p:outputLabel value="#{bundle.CreateCiudadLabel_descripcion}" for="descripcion" />
+                        <p:inputText id="descripcion" value="#{ciudadController.selected.descripcion}" title="#{bundle.CreateCiudadTitle_descripcion}" required="true" requiredMessage="#{bundle.CreateCiudadRequiredMessage_descripcion}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{ciudadController.create}" value="#{bundle.Save}" update="display,:CiudadListForm:datalist,:growl" oncomplete="handleSubmit(args,'CiudadCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CiudadCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

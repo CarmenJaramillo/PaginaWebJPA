@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EmpleadoViewDlg" widgetVar="EmpleadoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEmpleadoTitle}">
+            <h:form id="EmpleadoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{empleadoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEmpleadoLabel_idEmpleado}"/>
+                        <h:outputText value="#{empleadoController.selected.idEmpleado}" title="#{bundle.ViewEmpleadoTitle_idEmpleado}"/>
+                        <h:outputText value="#{bundle.ViewEmpleadoLabel_nombre1}"/>
+                        <h:outputText value="#{empleadoController.selected.nombre1}" title="#{bundle.ViewEmpleadoTitle_nombre1}"/>
+                        <h:outputText value="#{bundle.ViewEmpleadoLabel_nombre2}"/>
+                        <h:outputText value="#{empleadoController.selected.nombre2}" title="#{bundle.ViewEmpleadoTitle_nombre2}"/>
+                        <h:outputText value="#{bundle.ViewEmpleadoLabel_apellido1}"/>
+                        <h:outputText value="#{empleadoController.selected.apellido1}" title="#{bundle.ViewEmpleadoTitle_apellido1}"/>
+                        <h:outputText value="#{bundle.ViewEmpleadoLabel_apellido2}"/>
+                        <h:outputText value="#{empleadoController.selected.apellido2}" title="#{bundle.ViewEmpleadoTitle_apellido2}"/>
+                        <h:outputText value="#{bundle.ViewEmpleadoLabel_fecNcto}"/>
+                        <h:outputText value="#{empleadoController.selected.fecNcto}" title="#{bundle.ViewEmpleadoTitle_fecNcto}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEmpleadoLabel_sexo}"/>
+                        <p:selectBooleanCheckbox value="#{empleadoController.selected.sexo}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewEmpleadoLabel_telefono}"/>
+                        <h:outputText value="#{empleadoController.selected.telefono}" title="#{bundle.ViewEmpleadoTitle_telefono}"/>
+                        <h:outputText value="#{bundle.ViewEmpleadoLabel_direccion}"/>
+                        <h:outputText value="#{empleadoController.selected.direccion}" title="#{bundle.ViewEmpleadoTitle_direccion}"/>
+                        <h:outputText value="#{bundle.ViewEmpleadoLabel_email}"/>
+                        <h:outputText value="#{empleadoController.selected.email}" title="#{bundle.ViewEmpleadoTitle_email}"/>
+                        <h:outputText value="#{bundle.ViewEmpleadoLabel_contrasenia}"/>
+                        <h:outputText value="#{empleadoController.selected.contrasenia}" title="#{bundle.ViewEmpleadoTitle_contrasenia}"/>
+                        <h:outputText value="#{bundle.ViewEmpleadoLabel_idDepartamento}"/>
+                        <h:outputText value="#{empleadoController.selected.idDepartamento}" title="#{bundle.ViewEmpleadoTitle_idDepartamento}"/>
+                        <h:outputText value="#{bundle.ViewEmpleadoLabel_idBarrio}"/>
+                        <h:outputText value="#{empleadoController.selected.idBarrio}" title="#{bundle.ViewEmpleadoTitle_idBarrio}"/>
+                        <h:outputText value="#{bundle.ViewEmpleadoLabel_idCiudad}"/>
+                        <h:outputText value="#{empleadoController.selected.idCiudad}" title="#{bundle.ViewEmpleadoTitle_idCiudad}"/>
+                        <h:outputText value="#{bundle.ViewEmpleadoLabel_idRol}"/>
+                        <h:outputText value="#{empleadoController.selected.idRol}" title="#{bundle.ViewEmpleadoTitle_idRol}"/>
+                        <h:outputText value="#{bundle.ViewEmpleadoLabel_idEstrato}"/>
+                        <h:outputText value="#{empleadoController.selected.idEstrato}" title="#{bundle.ViewEmpleadoTitle_idEstrato}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EmpleadoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

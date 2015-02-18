@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DetalleplanclienteViewDlg" widgetVar="DetalleplanclienteViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewDetalleplanclienteTitle}">
+            <h:form id="DetalleplanclienteViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{detalleplanclienteController.selected != null}">
+                        <h:outputText value="#{bundle.ViewDetalleplanclienteLabel_idDetallePlanCliente}"/>
+                        <h:outputText value="#{detalleplanclienteController.selected.idDetallePlanCliente}" title="#{bundle.ViewDetalleplanclienteTitle_idDetallePlanCliente}"/>
+                        <h:outputText value="#{bundle.ViewDetalleplanclienteLabel_precioPlan}"/>
+                        <h:outputText value="#{detalleplanclienteController.selected.precioPlan}" title="#{bundle.ViewDetalleplanclienteTitle_precioPlan}"/>
+                        <h:outputText value="#{bundle.ViewDetalleplanclienteLabel_fechaPlan}"/>
+                        <h:outputText value="#{detalleplanclienteController.selected.fechaPlan}" title="#{bundle.ViewDetalleplanclienteTitle_fechaPlan}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewDetalleplanclienteLabel_idCliente}"/>
+                        <h:outputText value="#{detalleplanclienteController.selected.idCliente}" title="#{bundle.ViewDetalleplanclienteTitle_idCliente}"/>
+                        <h:outputText value="#{bundle.ViewDetalleplanclienteLabel_idNoPlan}"/>
+                        <h:outputText value="#{detalleplanclienteController.selected.idNoPlan}" title="#{bundle.ViewDetalleplanclienteTitle_idNoPlan}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="DetalleplanclienteViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProductoservicioCreateDlg" widgetVar="ProductoservicioCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateProductoservicioTitle}">
+            <h:form id="ProductoservicioCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{productoservicioController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateProductoservicioLabel_idProductoScio}" for="idProductoScio" />
+                        <p:inputText id="idProductoScio" value="#{productoservicioController.selected.idProductoScio}" title="#{bundle.CreateProductoservicioTitle_idProductoScio}" required="true" requiredMessage="#{bundle.CreateProductoservicioRequiredMessage_idProductoScio}"/>
+                        <p:outputLabel value="#{bundle.CreateProductoservicioLabel_nombreProductoServicio}" for="nombreProductoServicio" />
+                        <p:inputText id="nombreProductoServicio" value="#{productoservicioController.selected.nombreProductoServicio}" title="#{bundle.CreateProductoservicioTitle_nombreProductoServicio}" required="true" requiredMessage="#{bundle.CreateProductoservicioRequiredMessage_nombreProductoServicio}"/>
+                        <p:outputLabel value="#{bundle.CreateProductoservicioLabel_vrUnitario}" for="vrUnitario" />
+                        <p:inputText id="vrUnitario" value="#{productoservicioController.selected.vrUnitario}" title="#{bundle.CreateProductoservicioTitle_vrUnitario}" required="true" requiredMessage="#{bundle.CreateProductoservicioRequiredMessage_vrUnitario}"/>
+                        <p:outputLabel value="#{bundle.CreateProductoservicioLabel_cantidad}" for="cantidad" />
+                        <p:inputText id="cantidad" value="#{productoservicioController.selected.cantidad}" title="#{bundle.CreateProductoservicioTitle_cantidad}" required="true" requiredMessage="#{bundle.CreateProductoservicioRequiredMessage_cantidad}"/>
+                        <p:outputLabel value="#{bundle.CreateProductoservicioLabel_idCategoria}" for="idCategoria" />
+                        <p:selectOneMenu id="idCategoria" value="#{productoservicioController.selected.idCategoria}" required="true" requiredMessage="#{bundle.EditProductoservicioRequiredMessage_idCategoria}">
+                            <f:selectItems value="#{categoriaController.itemsAvailableSelectOne}"
+                                           var="idCategoriaItem"
+                                           itemValue="#{idCategoriaItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{productoservicioController.create}" value="#{bundle.Save}" update="display,:ProductoservicioListForm:datalist,:growl" oncomplete="handleSubmit(args,'ProductoservicioCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ProductoservicioCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DetallefacturaproductoscioEditDlg" widgetVar="DetallefacturaproductoscioEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditDetallefacturaproductoscioTitle}">
+            <h:form id="DetallefacturaproductoscioEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{detallefacturaproductoscioController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditDetallefacturaproductoscioLabel_idDetalleFacturaProductoScio}" for="idDetalleFacturaProductoScio" />
+                        <p:inputText id="idDetalleFacturaProductoScio" value="#{detallefacturaproductoscioController.selected.idDetalleFacturaProductoScio}" title="#{bundle.EditDetallefacturaproductoscioTitle_idDetalleFacturaProductoScio}" required="true" requiredMessage="#{bundle.EditDetallefacturaproductoscioRequiredMessage_idDetalleFacturaProductoScio}"/>
+                        <p:outputLabel value="#{bundle.EditDetallefacturaproductoscioLabel_cantidad}" for="cantidad" />
+                        <p:inputText id="cantidad" value="#{detallefacturaproductoscioController.selected.cantidad}" title="#{bundle.EditDetallefacturaproductoscioTitle_cantidad}" required="true" requiredMessage="#{bundle.EditDetallefacturaproductoscioRequiredMessage_cantidad}"/>
+                        <p:outputLabel value="#{bundle.EditDetallefacturaproductoscioLabel_vrUnitario}" for="vrUnitario" />
+                        <p:inputText id="vrUnitario" value="#{detallefacturaproductoscioController.selected.vrUnitario}" title="#{bundle.EditDetallefacturaproductoscioTitle_vrUnitario}" required="true" requiredMessage="#{bundle.EditDetallefacturaproductoscioRequiredMessage_vrUnitario}"/>
+                        <p:outputLabel value="#{bundle.EditDetallefacturaproductoscioLabel_fechaVentaPauta}" for="fechaVentaPauta" />
+                        <p:calendar id="fechaVentaPauta" pattern="MM/dd/yyyy" value="#{detallefacturaproductoscioController.selected.fechaVentaPauta}" title="#{bundle.EditDetallefacturaproductoscioTitle_fechaVentaPauta}" required="true" requiredMessage="#{bundle.EditDetallefacturaproductoscioRequiredMessage_fechaVentaPauta}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditDetallefacturaproductoscioLabel_idFactura}" for="idFactura" />
+                        <p:selectOneMenu id="idFactura" value="#{detallefacturaproductoscioController.selected.idFactura}" required="true" requiredMessage="#{bundle.EditDetallefacturaproductoscioRequiredMessage_idFactura}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{facturaController.itemsAvailableSelectOne}"
+                                           var="idFacturaItem"
+                                           itemValue="#{idFacturaItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditDetallefacturaproductoscioLabel_idProductoScio}" for="idProductoScio" />
+                        <p:selectOneMenu id="idProductoScio" value="#{detallefacturaproductoscioController.selected.idProductoScio}" required="true" requiredMessage="#{bundle.EditDetallefacturaproductoscioRequiredMessage_idProductoScio}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{productoservicioController.itemsAvailableSelectOne}"
+                                           var="idProductoScioItem"
+                                           itemValue="#{idProductoScioItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{detallefacturaproductoscioController.update}" value="#{bundle.Save}" update="display,:DetallefacturaproductoscioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'DetallefacturaproductoscioEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DetallefacturaproductoscioEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DetalleusuariocategoriaEditDlg" widgetVar="DetalleusuariocategoriaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditDetalleusuariocategoriaTitle}">
+            <h:form id="DetalleusuariocategoriaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{detalleusuariocategoriaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditDetalleusuariocategoriaLabel_detalleUsuarioCategoria}" for="detalleUsuarioCategoria" />
+                        <p:inputText id="detalleUsuarioCategoria" value="#{detalleusuariocategoriaController.selected.detalleUsuarioCategoria}" title="#{bundle.EditDetalleusuariocategoriaTitle_detalleUsuarioCategoria}" required="true" requiredMessage="#{bundle.EditDetalleusuariocategoriaRequiredMessage_detalleUsuarioCategoria}"/>
+                        <p:outputLabel value="#{bundle.EditDetalleusuariocategoriaLabel_idUsuario}" for="idUsuario" />
+                        <p:selectOneMenu id="idUsuario" value="#{detalleusuariocategoriaController.selected.idUsuario}" required="true" requiredMessage="#{bundle.EditDetalleusuariocategoriaRequiredMessage_idUsuario}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"
+                                           var="idUsuarioItem"
+                                           itemValue="#{idUsuarioItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditDetalleusuariocategoriaLabel_idCategoria}" for="idCategoria" />
+                        <p:selectOneMenu id="idCategoria" value="#{detalleusuariocategoriaController.selected.idCategoria}" required="true" requiredMessage="#{bundle.EditDetalleusuariocategoriaRequiredMessage_idCategoria}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{categoriaController.itemsAvailableSelectOne}"
+                                           var="idCategoriaItem"
+                                           itemValue="#{idCategoriaItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{detalleusuariocategoriaController.update}" value="#{bundle.Save}" update="display,:DetalleusuariocategoriaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'DetalleusuariocategoriaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DetalleusuariocategoriaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

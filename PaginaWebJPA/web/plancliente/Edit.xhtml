@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PlanclienteEditDlg" widgetVar="PlanclienteEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditPlanclienteTitle}">
+            <h:form id="PlanclienteEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{planclienteController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditPlanclienteLabel_idNoPlan}" for="idNoPlan" />
+                        <p:inputText id="idNoPlan" value="#{planclienteController.selected.idNoPlan}" title="#{bundle.EditPlanclienteTitle_idNoPlan}" required="true" requiredMessage="#{bundle.EditPlanclienteRequiredMessage_idNoPlan}"/>
+                        <p:outputLabel value="#{bundle.EditPlanclienteLabel_descripcion}" for="descripcion" />
+                        <p:inputText id="descripcion" value="#{planclienteController.selected.descripcion}" title="#{bundle.EditPlanclienteTitle_descripcion}" required="true" requiredMessage="#{bundle.EditPlanclienteRequiredMessage_descripcion}"/>
+                        <p:outputLabel value="#{bundle.EditPlanclienteLabel_fechaPlan}" for="fechaPlan" />
+                        <p:calendar id="fechaPlan" pattern="MM/dd/yyyy" value="#{planclienteController.selected.fechaPlan}" title="#{bundle.EditPlanclienteTitle_fechaPlan}" required="true" requiredMessage="#{bundle.EditPlanclienteRequiredMessage_fechaPlan}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditPlanclienteLabel_fechaVcto}" for="fechaVcto" />
+                        <p:calendar id="fechaVcto" pattern="MM/dd/yyyy" value="#{planclienteController.selected.fechaVcto}" title="#{bundle.EditPlanclienteTitle_fechaVcto}" required="true" requiredMessage="#{bundle.EditPlanclienteRequiredMessage_fechaVcto}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditPlanclienteLabel_precioPlan}" for="precioPlan" />
+                        <p:inputText id="precioPlan" value="#{planclienteController.selected.precioPlan}" title="#{bundle.EditPlanclienteTitle_precioPlan}" required="true" requiredMessage="#{bundle.EditPlanclienteRequiredMessage_precioPlan}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{planclienteController.update}" value="#{bundle.Save}" update="display,:PlanclienteListForm:datalist,:growl" oncomplete="handleSubmit(args, 'PlanclienteEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PlanclienteEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FacturaViewDlg" widgetVar="FacturaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewFacturaTitle}">
+            <h:form id="FacturaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{facturaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewFacturaLabel_idFactura}"/>
+                        <h:outputText value="#{facturaController.selected.idFactura}" title="#{bundle.ViewFacturaTitle_idFactura}"/>
+                        <h:outputText value="#{bundle.ViewFacturaLabel_fechaFactura}"/>
+                        <h:outputText value="#{facturaController.selected.fechaFactura}" title="#{bundle.ViewFacturaTitle_fechaFactura}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewFacturaLabel_fechaVcto}"/>
+                        <h:outputText value="#{facturaController.selected.fechaVcto}" title="#{bundle.ViewFacturaTitle_fechaVcto}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewFacturaLabel_precioPlan}"/>
+                        <h:outputText value="#{facturaController.selected.precioPlan}" title="#{bundle.ViewFacturaTitle_precioPlan}"/>
+                        <h:outputText value="#{bundle.ViewFacturaLabel_idCliente}"/>
+                        <h:outputText value="#{facturaController.selected.idCliente}" title="#{bundle.ViewFacturaTitle_idCliente}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="FacturaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

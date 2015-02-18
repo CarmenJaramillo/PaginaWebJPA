@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MetodopagoCreateDlg" widgetVar="MetodopagoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateMetodopagoTitle}">
+            <h:form id="MetodopagoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{metodopagoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateMetodopagoLabel_idMetodoPago}" for="idMetodoPago" />
+                        <p:inputText id="idMetodoPago" value="#{metodopagoController.selected.idMetodoPago}" title="#{bundle.CreateMetodopagoTitle_idMetodoPago}" required="true" requiredMessage="#{bundle.CreateMetodopagoRequiredMessage_idMetodoPago}"/>
+                        <p:outputLabel value="#{bundle.CreateMetodopagoLabel_descripcion}" for="descripcion" />
+                        <p:inputText id="descripcion" value="#{metodopagoController.selected.descripcion}" title="#{bundle.CreateMetodopagoTitle_descripcion}" required="true" requiredMessage="#{bundle.CreateMetodopagoRequiredMessage_descripcion}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{metodopagoController.create}" value="#{bundle.Save}" update="display,:MetodopagoListForm:datalist,:growl" oncomplete="handleSubmit(args,'MetodopagoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="MetodopagoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
