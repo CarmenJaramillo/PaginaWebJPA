@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DetalleclienteproductoCreateDlg" widgetVar="DetalleclienteproductoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateDetalleclienteproductoTitle}">
+            <h:form id="DetalleclienteproductoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{detalleclienteproductoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateDetalleclienteproductoLabel_idDetalleClienteProducto}" for="idDetalleClienteProducto" />
+                        <p:inputText id="idDetalleClienteProducto" value="#{detalleclienteproductoController.selected.idDetalleClienteProducto}" title="#{bundle.CreateDetalleclienteproductoTitle_idDetalleClienteProducto}" required="true" requiredMessage="#{bundle.CreateDetalleclienteproductoRequiredMessage_idDetalleClienteProducto}"/>
+                        <p:outputLabel value="#{bundle.CreateDetalleclienteproductoLabel_cantidad}" for="cantidad" />
+                        <p:inputText id="cantidad" value="#{detalleclienteproductoController.selected.cantidad}" title="#{bundle.CreateDetalleclienteproductoTitle_cantidad}" required="true" requiredMessage="#{bundle.CreateDetalleclienteproductoRequiredMessage_cantidad}"/>
+                        <p:outputLabel value="#{bundle.CreateDetalleclienteproductoLabel_valorUnitario}" for="valorUnitario" />
+                        <p:inputText id="valorUnitario" value="#{detalleclienteproductoController.selected.valorUnitario}" title="#{bundle.CreateDetalleclienteproductoTitle_valorUnitario}" required="true" requiredMessage="#{bundle.CreateDetalleclienteproductoRequiredMessage_valorUnitario}"/>
+                        <p:outputLabel value="#{bundle.CreateDetalleclienteproductoLabel_idCliente}" for="idCliente" />
+                        <p:selectOneMenu id="idCliente" value="#{detalleclienteproductoController.selected.idCliente}" required="true" requiredMessage="#{bundle.EditDetalleclienteproductoRequiredMessage_idCliente}">
+                            <f:selectItems value="#{clienteController.itemsAvailableSelectOne}"
+                                           var="idClienteItem"
+                                           itemValue="#{idClienteItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateDetalleclienteproductoLabel_idProductoScio}" for="idProductoScio" />
+                        <p:selectOneMenu id="idProductoScio" value="#{detalleclienteproductoController.selected.idProductoScio}" required="true" requiredMessage="#{bundle.EditDetalleclienteproductoRequiredMessage_idProductoScio}">
+                            <f:selectItems value="#{productoServicioController.itemsAvailableSelectOne}"
+                                           var="idProductoScioItem"
+                                           itemValue="#{idProductoScioItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{detalleclienteproductoController.create}" value="#{bundle.Save}" update="display,:DetalleclienteproductoListForm:datalist,:growl" oncomplete="handleSubmit(args,'DetalleclienteproductoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DetalleclienteproductoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ReservaEditDlg" widgetVar="ReservaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditReservaTitle}">
+            <h:form id="ReservaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{reservaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditReservaLabel_idreserva}" for="idreserva" />
+                        <p:inputText id="idreserva" value="#{reservaController.selected.idreserva}" title="#{bundle.EditReservaTitle_idreserva}" required="true" requiredMessage="#{bundle.EditReservaRequiredMessage_idreserva}"/>
+                        <p:outputLabel value="#{bundle.EditReservaLabel_cantidad}" for="cantidad" />
+                        <p:inputText id="cantidad" value="#{reservaController.selected.cantidad}" title="#{bundle.EditReservaTitle_cantidad}" required="true" requiredMessage="#{bundle.EditReservaRequiredMessage_cantidad}"/>
+                        <p:outputLabel value="#{bundle.EditReservaLabel_valorUnitario}" for="valorUnitario" />
+                        <p:inputText id="valorUnitario" value="#{reservaController.selected.valorUnitario}" title="#{bundle.EditReservaTitle_valorUnitario}" required="true" requiredMessage="#{bundle.EditReservaRequiredMessage_valorUnitario}"/>
+                        <p:outputLabel value="#{bundle.EditReservaLabel_idProducto}" for="idProducto" />
+                        <p:selectOneMenu id="idProducto" value="#{reservaController.selected.idProducto}" required="true" requiredMessage="#{bundle.EditReservaRequiredMessage_idProducto}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{productoServicioController.itemsAvailableSelectOne}"
+                                           var="idProductoItem"
+                                           itemValue="#{idProductoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{reservaController.update}" value="#{bundle.Save}" update="display,:ReservaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ReservaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ReservaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

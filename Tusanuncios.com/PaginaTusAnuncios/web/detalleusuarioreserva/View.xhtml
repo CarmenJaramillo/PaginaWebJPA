@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DetalleusuarioreservaViewDlg" widgetVar="DetalleusuarioreservaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewDetalleusuarioreservaTitle}">
+            <h:form id="DetalleusuarioreservaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{detalleusuarioreservaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewDetalleusuarioreservaLabel_idDetalleUsuarioReserva}"/>
+                        <h:outputText value="#{detalleusuarioreservaController.selected.idDetalleUsuarioReserva}" title="#{bundle.ViewDetalleusuarioreservaTitle_idDetalleUsuarioReserva}"/>
+                        <h:outputText value="#{bundle.ViewDetalleusuarioreservaLabel_cantidad}"/>
+                        <h:outputText value="#{detalleusuarioreservaController.selected.cantidad}" title="#{bundle.ViewDetalleusuarioreservaTitle_cantidad}"/>
+                        <h:outputText value="#{bundle.ViewDetalleusuarioreservaLabel_vrUnitario}"/>
+                        <h:outputText value="#{detalleusuarioreservaController.selected.vrUnitario}" title="#{bundle.ViewDetalleusuarioreservaTitle_vrUnitario}"/>
+                        <h:outputText value="#{bundle.ViewDetalleusuarioreservaLabel_fechaReservacion}"/>
+                        <h:outputText value="#{detalleusuarioreservaController.selected.fechaReservacion}" title="#{bundle.ViewDetalleusuarioreservaTitle_fechaReservacion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewDetalleusuarioreservaLabel_idreserva}"/>
+                        <h:outputText value="#{detalleusuarioreservaController.selected.idreserva}" title="#{bundle.ViewDetalleusuarioreservaTitle_idreserva}"/>
+                        <h:outputText value="#{bundle.ViewDetalleusuarioreservaLabel_idusuario}"/>
+                        <h:outputText value="#{detalleusuarioreservaController.selected.idusuario}" title="#{bundle.ViewDetalleusuarioreservaTitle_idusuario}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="DetalleusuarioreservaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

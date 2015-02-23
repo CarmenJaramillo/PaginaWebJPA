@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DetallefacturaproductoscioViewDlg" widgetVar="DetallefacturaproductoscioViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewDetallefacturaproductoscioTitle}">
+            <h:form id="DetallefacturaproductoscioViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{detallefacturaproductoscioController.selected != null}">
+                        <h:outputText value="#{bundle.ViewDetallefacturaproductoscioLabel_idDetalleFacturaProductoScio}"/>
+                        <h:outputText value="#{detallefacturaproductoscioController.selected.idDetalleFacturaProductoScio}" title="#{bundle.ViewDetallefacturaproductoscioTitle_idDetalleFacturaProductoScio}"/>
+                        <h:outputText value="#{bundle.ViewDetallefacturaproductoscioLabel_cantidad}"/>
+                        <h:outputText value="#{detallefacturaproductoscioController.selected.cantidad}" title="#{bundle.ViewDetallefacturaproductoscioTitle_cantidad}"/>
+                        <h:outputText value="#{bundle.ViewDetallefacturaproductoscioLabel_fechaVtaProd}"/>
+                        <h:outputText value="#{detallefacturaproductoscioController.selected.fechaVtaProd}" title="#{bundle.ViewDetallefacturaproductoscioTitle_fechaVtaProd}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewDetallefacturaproductoscioLabel_valorUnitario}"/>
+                        <h:outputText value="#{detallefacturaproductoscioController.selected.valorUnitario}" title="#{bundle.ViewDetallefacturaproductoscioTitle_valorUnitario}"/>
+                        <h:outputText value="#{bundle.ViewDetallefacturaproductoscioLabel_idFactura}"/>
+                        <h:outputText value="#{detallefacturaproductoscioController.selected.idFactura}" title="#{bundle.ViewDetallefacturaproductoscioTitle_idFactura}"/>
+                        <h:outputText value="#{bundle.ViewDetallefacturaproductoscioLabel_idProductoScio}"/>
+                        <h:outputText value="#{detallefacturaproductoscioController.selected.idProductoScio}" title="#{bundle.ViewDetallefacturaproductoscioTitle_idProductoScio}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="DetallefacturaproductoscioViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

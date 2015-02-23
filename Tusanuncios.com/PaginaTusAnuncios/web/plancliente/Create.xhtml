@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PlanclienteCreateDlg" widgetVar="PlanclienteCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreatePlanclienteTitle}">
+            <h:form id="PlanclienteCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{planclienteController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreatePlanclienteLabel_idNoPlan}" for="idNoPlan" />
+                        <p:inputText id="idNoPlan" value="#{planclienteController.selected.idNoPlan}" title="#{bundle.CreatePlanclienteTitle_idNoPlan}" required="true" requiredMessage="#{bundle.CreatePlanclienteRequiredMessage_idNoPlan}"/>
+                        <p:outputLabel value="#{bundle.CreatePlanclienteLabel_descripcion}" for="descripcion" />
+                        <p:inputText id="descripcion" value="#{planclienteController.selected.descripcion}" title="#{bundle.CreatePlanclienteTitle_descripcion}" required="true" requiredMessage="#{bundle.CreatePlanclienteRequiredMessage_descripcion}"/>
+                        <p:outputLabel value="#{bundle.CreatePlanclienteLabel_precioPlan}" for="precioPlan" />
+                        <p:inputText id="precioPlan" value="#{planclienteController.selected.precioPlan}" title="#{bundle.CreatePlanclienteTitle_precioPlan}" required="true" requiredMessage="#{bundle.CreatePlanclienteRequiredMessage_precioPlan}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{planclienteController.create}" value="#{bundle.Save}" update="display,:PlanclienteListForm:datalist,:growl" oncomplete="handleSubmit(args,'PlanclienteCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PlanclienteCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

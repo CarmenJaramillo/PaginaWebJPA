@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DetalleusuarioreservaCreateDlg" widgetVar="DetalleusuarioreservaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateDetalleusuarioreservaTitle}">
+            <h:form id="DetalleusuarioreservaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{detalleusuarioreservaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateDetalleusuarioreservaLabel_idDetalleUsuarioReserva}" for="idDetalleUsuarioReserva" />
+                        <p:inputText id="idDetalleUsuarioReserva" value="#{detalleusuarioreservaController.selected.idDetalleUsuarioReserva}" title="#{bundle.CreateDetalleusuarioreservaTitle_idDetalleUsuarioReserva}" required="true" requiredMessage="#{bundle.CreateDetalleusuarioreservaRequiredMessage_idDetalleUsuarioReserva}"/>
+                        <p:outputLabel value="#{bundle.CreateDetalleusuarioreservaLabel_cantidad}" for="cantidad" />
+                        <p:inputText id="cantidad" value="#{detalleusuarioreservaController.selected.cantidad}" title="#{bundle.CreateDetalleusuarioreservaTitle_cantidad}" required="true" requiredMessage="#{bundle.CreateDetalleusuarioreservaRequiredMessage_cantidad}"/>
+                        <p:outputLabel value="#{bundle.CreateDetalleusuarioreservaLabel_vrUnitario}" for="vrUnitario" />
+                        <p:inputText id="vrUnitario" value="#{detalleusuarioreservaController.selected.vrUnitario}" title="#{bundle.CreateDetalleusuarioreservaTitle_vrUnitario}" required="true" requiredMessage="#{bundle.CreateDetalleusuarioreservaRequiredMessage_vrUnitario}"/>
+                        <p:outputLabel value="#{bundle.CreateDetalleusuarioreservaLabel_fechaReservacion}" for="fechaReservacion" />
+                        <p:calendar id="fechaReservacion" pattern="MM/dd/yyyy" value="#{detalleusuarioreservaController.selected.fechaReservacion}" title="#{bundle.EditDetalleusuarioreservaTitle_fechaReservacion}" required="true" requiredMessage="#{bundle.EditDetalleusuarioreservaRequiredMessage_fechaReservacion}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateDetalleusuarioreservaLabel_idreserva}" for="idreserva" />
+                        <p:selectOneMenu id="idreserva" value="#{detalleusuarioreservaController.selected.idreserva}" required="true" requiredMessage="#{bundle.EditDetalleusuarioreservaRequiredMessage_idreserva}">
+                            <f:selectItems value="#{reservaController.itemsAvailableSelectOne}"
+                                           var="idreservaItem"
+                                           itemValue="#{idreservaItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateDetalleusuarioreservaLabel_idusuario}" for="idusuario" />
+                        <p:selectOneMenu id="idusuario" value="#{detalleusuarioreservaController.selected.idusuario}" required="true" requiredMessage="#{bundle.EditDetalleusuarioreservaRequiredMessage_idusuario}">
+                            <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"
+                                           var="idusuarioItem"
+                                           itemValue="#{idusuarioItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{detalleusuarioreservaController.create}" value="#{bundle.Save}" update="display,:DetalleusuarioreservaListForm:datalist,:growl" oncomplete="handleSubmit(args,'DetalleusuarioreservaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DetalleusuarioreservaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DetallesrolespermisosCreateDlg" widgetVar="DetallesrolespermisosCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateDetallesrolespermisosTitle}">
+            <h:form id="DetallesrolespermisosCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{detallesrolespermisosController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateDetallesrolespermisosLabel_idDetalleRolesPermisos}" for="idDetalleRolesPermisos" />
+                        <p:inputText id="idDetalleRolesPermisos" value="#{detallesrolespermisosController.selected.idDetalleRolesPermisos}" title="#{bundle.CreateDetallesrolespermisosTitle_idDetalleRolesPermisos}" required="true" requiredMessage="#{bundle.CreateDetallesrolespermisosRequiredMessage_idDetalleRolesPermisos}"/>
+                        <p:outputLabel value="#{bundle.CreateDetallesrolespermisosLabel_idPermisos}" for="idPermisos" />
+                        <p:selectOneMenu id="idPermisos" value="#{detallesrolespermisosController.selected.idPermisos}" required="true" requiredMessage="#{bundle.EditDetallesrolespermisosRequiredMessage_idPermisos}">
+                            <f:selectItems value="#{permisosController.itemsAvailableSelectOne}"
+                                           var="idPermisosItem"
+                                           itemValue="#{idPermisosItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateDetallesrolespermisosLabel_idRol}" for="idRol" />
+                        <p:selectOneMenu id="idRol" value="#{detallesrolespermisosController.selected.idRol}" required="true" requiredMessage="#{bundle.EditDetallesrolespermisosRequiredMessage_idRol}">
+                            <f:selectItems value="#{rolController.itemsAvailableSelectOne}"
+                                           var="idRolItem"
+                                           itemValue="#{idRolItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{detallesrolespermisosController.create}" value="#{bundle.Save}" update="display,:DetallesrolespermisosListForm:datalist,:growl" oncomplete="handleSubmit(args,'DetallesrolespermisosCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DetallesrolespermisosCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

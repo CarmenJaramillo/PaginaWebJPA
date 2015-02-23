@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DetalleclienteproductoViewDlg" widgetVar="DetalleclienteproductoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewDetalleclienteproductoTitle}">
+            <h:form id="DetalleclienteproductoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{detalleclienteproductoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewDetalleclienteproductoLabel_idDetalleClienteProducto}"/>
+                        <h:outputText value="#{detalleclienteproductoController.selected.idDetalleClienteProducto}" title="#{bundle.ViewDetalleclienteproductoTitle_idDetalleClienteProducto}"/>
+                        <h:outputText value="#{bundle.ViewDetalleclienteproductoLabel_cantidad}"/>
+                        <h:outputText value="#{detalleclienteproductoController.selected.cantidad}" title="#{bundle.ViewDetalleclienteproductoTitle_cantidad}"/>
+                        <h:outputText value="#{bundle.ViewDetalleclienteproductoLabel_valorUnitario}"/>
+                        <h:outputText value="#{detalleclienteproductoController.selected.valorUnitario}" title="#{bundle.ViewDetalleclienteproductoTitle_valorUnitario}"/>
+                        <h:outputText value="#{bundle.ViewDetalleclienteproductoLabel_idCliente}"/>
+                        <h:outputText value="#{detalleclienteproductoController.selected.idCliente}" title="#{bundle.ViewDetalleclienteproductoTitle_idCliente}"/>
+                        <h:outputText value="#{bundle.ViewDetalleclienteproductoLabel_idProductoScio}"/>
+                        <h:outputText value="#{detalleclienteproductoController.selected.idProductoScio}" title="#{bundle.ViewDetalleclienteproductoTitle_idProductoScio}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="DetalleclienteproductoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

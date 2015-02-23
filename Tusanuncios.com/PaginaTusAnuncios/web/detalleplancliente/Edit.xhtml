@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DetalleplanclienteEditDlg" widgetVar="DetalleplanclienteEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditDetalleplanclienteTitle}">
+            <h:form id="DetalleplanclienteEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{detalleplanclienteController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditDetalleplanclienteLabel_idDetallePlanCliente}" for="idDetallePlanCliente" />
+                        <p:inputText id="idDetallePlanCliente" value="#{detalleplanclienteController.selected.idDetallePlanCliente}" title="#{bundle.EditDetalleplanclienteTitle_idDetallePlanCliente}" required="true" requiredMessage="#{bundle.EditDetalleplanclienteRequiredMessage_idDetallePlanCliente}"/>
+                        <p:outputLabel value="#{bundle.EditDetalleplanclienteLabel_vrPlan}" for="vrPlan" />
+                        <p:inputText id="vrPlan" value="#{detalleplanclienteController.selected.vrPlan}" title="#{bundle.EditDetalleplanclienteTitle_vrPlan}" required="true" requiredMessage="#{bundle.EditDetalleplanclienteRequiredMessage_vrPlan}"/>
+                        <p:outputLabel value="#{bundle.EditDetalleplanclienteLabel_fechAdquis}" for="fechAdquis" />
+                        <p:calendar id="fechAdquis" pattern="MM/dd/yyyy HH:mm:ss" value="#{detalleplanclienteController.selected.fechAdquis}" title="#{bundle.EditDetalleplanclienteTitle_fechAdquis}" required="true" requiredMessage="#{bundle.EditDetalleplanclienteRequiredMessage_fechAdquis}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditDetalleplanclienteLabel_idCliente}" for="idCliente" />
+                        <p:selectOneMenu id="idCliente" value="#{detalleplanclienteController.selected.idCliente}" required="true" requiredMessage="#{bundle.EditDetalleplanclienteRequiredMessage_idCliente}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{clienteController.itemsAvailableSelectOne}"
+                                           var="idClienteItem"
+                                           itemValue="#{idClienteItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditDetalleplanclienteLabel_idNoplan}" for="idNoplan" />
+                        <p:selectOneMenu id="idNoplan" value="#{detalleplanclienteController.selected.idNoplan}" required="true" requiredMessage="#{bundle.EditDetalleplanclienteRequiredMessage_idNoplan}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{planclienteController.itemsAvailableSelectOne}"
+                                           var="idNoplanItem"
+                                           itemValue="#{idNoplanItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{detalleplanclienteController.update}" value="#{bundle.Save}" update="display,:DetalleplanclienteListForm:datalist,:growl" oncomplete="handleSubmit(args, 'DetalleplanclienteEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DetalleplanclienteEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
