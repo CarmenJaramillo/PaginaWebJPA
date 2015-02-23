@@ -71,33 +71,33 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListClienteTitle_idActEcon}"/>
+                                <h:outputText value="#{bundle.ListActividadeconomicaTitle_idActEcon}"/>
                             </f:facet>
-                            <h:outputText value="#{item.idActEcon}"/>
+                            <h:outputText value="#{item.idActEcon.descripcion}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListClienteTitle_idBarrio}"/>
                             </f:facet>
-                            <h:outputText value="#{item.idBarrio}"/>
+                            <h:outputText value="#{item.idBarrio.descripcion}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListClienteTitle_idCiudad}"/>
                             </f:facet>
-                            <h:outputText value="#{item.idCiudad}"/>
+                            <h:outputText value="#{item.idCiudad.descripcion}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListClienteTitle_idDepartamento}"/>
                             </f:facet>
-                            <h:outputText value="#{item.idDepartamento}"/>
+                            <h:outputText value="#{item.idDepartamento.descripcion}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListClienteTitle_idMetodoPago}"/>
                             </f:facet>
-                            <h:outputText value="#{item.idMetodoPago}"/>
+                            <h:outputText value="#{item.idMetodoPago.descripcion}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{clienteController.prepareCreate}" update=":ClienteCreateForm" oncomplete="PF('ClienteCreateDialog').show()"/>

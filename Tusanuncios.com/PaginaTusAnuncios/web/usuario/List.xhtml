@@ -85,19 +85,19 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListUsuarioTitle_idCiudad}"/>
                             </f:facet>
-                            <h:outputText value="#{item.idCiudad}"/>
+                            <h:outputText value="#{item.idCiudad.descripcion}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListUsuarioTitle_idDepartamento}"/>
                             </f:facet>
-                            <h:outputText value="#{item.idDepartamento}"/>
+                            <h:outputText value="#{item.idDepartamento.descripcion}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListUsuarioTitle_idRol}"/>
                             </f:facet>
-                            <h:outputText value="#{item.idRol}"/>
+                            <h:outputText value="#{item.idRol.descripcion}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{usuarioController.prepareCreate}" update=":UsuarioCreateForm" oncomplete="PF('UsuarioCreateDialog').show()"/>
