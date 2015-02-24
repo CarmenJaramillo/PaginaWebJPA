@@ -12,8 +12,7 @@
             <h:form id="FacturaCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{facturaController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateFacturaLabel_idFactura}" for="idFactura" />
-                        <p:inputText id="idFactura" value="#{facturaController.selected.idFactura}" title="#{bundle.CreateFacturaTitle_idFactura}" required="true" requiredMessage="#{bundle.CreateFacturaRequiredMessage_idFactura}"/>
+                       
                         <p:outputLabel value="#{bundle.CreateFacturaLabel_fechaFactura}" for="fechaFactura" />
                         <p:calendar id="fechaFactura" pattern="MM/dd/yyyy HH:mm:ss" value="#{facturaController.selected.fechaFactura}" title="#{bundle.EditFacturaTitle_fechaFactura}" required="true" requiredMessage="#{bundle.EditFacturaRequiredMessage_fechaFactura}" showOn="button"/>
                         <p:outputLabel value="#{bundle.CreateFacturaLabel_fechaVcto}" for="fechaVcto" />

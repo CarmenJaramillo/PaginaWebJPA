@@ -27,12 +27,7 @@
                         <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
                         <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListFacturaTitle_idFactura}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idFactura}"/>
-                        </p:column>
+                        
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListFacturaTitle_fechaFactura}"/>
@@ -53,7 +48,7 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListFacturaTitle_idCliente}"/>
                             </f:facet>
-                            <h:outputText value="#{item.idCliente}"/>
+                            <h:outputText value="#{item.idCliente.razonSocial}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">

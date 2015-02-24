@@ -37,13 +37,13 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListDetalleusuariocategoriaTitle_idusuario}"/>
                             </f:facet>
-                            <h:outputText value="#{item.idusuario}"/>
+                            <h:outputText value="#{item.idusuario.email}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListDetalleusuariocategoriaTitle_idCategoria}"/>
                             </f:facet>
-                            <h:outputText value="#{item.idCategoria}"/>
+                            <h:outputText value="#{item.idCategoria.descripcion}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{detalleusuariocategoriaController.prepareCreate}" update=":DetalleusuariocategoriaCreateForm" oncomplete="PF('DetalleusuariocategoriaCreateDialog').show()"/>

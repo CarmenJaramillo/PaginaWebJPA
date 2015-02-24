@@ -37,13 +37,13 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListDetallesrolespermisosTitle_idPermisos}"/>
                             </f:facet>
-                            <h:outputText value="#{item.idPermisos}"/>
+                            <h:outputText value="#{item.idPermisos.descripcion}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListDetallesrolespermisosTitle_idRol}"/>
                             </f:facet>
-                            <h:outputText value="#{item.idRol}"/>
+                            <h:outputText value="#{item.idRol.descripcion}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{detallesrolespermisosController.prepareCreate}" update=":DetallesrolespermisosCreateForm" oncomplete="PF('DetallesrolespermisosCreateDialog').show()"/>

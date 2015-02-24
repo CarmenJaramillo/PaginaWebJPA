@@ -12,8 +12,7 @@
             <h:form id="DetallefacturaproductoscioCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{detallefacturaproductoscioController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateDetallefacturaproductoscioLabel_idDetalleFacturaProductoScio}" for="idDetalleFacturaProductoScio" />
-                        <p:inputText id="idDetalleFacturaProductoScio" value="#{detallefacturaproductoscioController.selected.idDetalleFacturaProductoScio}" title="#{bundle.CreateDetallefacturaproductoscioTitle_idDetalleFacturaProductoScio}" required="true" requiredMessage="#{bundle.CreateDetallefacturaproductoscioRequiredMessage_idDetalleFacturaProductoScio}"/>
+                        
                         <p:outputLabel value="#{bundle.CreateDetallefacturaproductoscioLabel_cantidad}" for="cantidad" />
                         <p:inputText id="cantidad" value="#{detallefacturaproductoscioController.selected.cantidad}" title="#{bundle.CreateDetallefacturaproductoscioTitle_cantidad}" required="true" requiredMessage="#{bundle.CreateDetallefacturaproductoscioRequiredMessage_cantidad}"/>
                         <p:outputLabel value="#{bundle.CreateDetallefacturaproductoscioLabel_fechaVtaProd}" for="fechaVtaProd" />

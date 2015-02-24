@@ -49,13 +49,13 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListDetalleclienteproductoTitle_idCliente}"/>
                             </f:facet>
-                            <h:outputText value="#{item.idCliente}"/>
+                            <h:outputText value="#{item.idCliente.razonSocial}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListDetalleclienteproductoTitle_idProductoScio}"/>
                             </f:facet>
-                            <h:outputText value="#{item.idProductoScio}"/>
+                            <h:outputText value="#{item.idProductoScio.nombreProducto}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{detalleclienteproductoController.prepareCreate}" update=":DetalleclienteproductoCreateForm" oncomplete="PF('DetalleclienteproductoCreateDialog').show()"/>
